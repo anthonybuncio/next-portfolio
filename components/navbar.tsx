@@ -60,7 +60,7 @@ export function Navbar() {
               className="group-hover:scale-150 transition-transform duration-300"
             />
             <span className="font-mono text-xs tracking-widest text-muted-foreground">
-              anthony buncio
+              ANTHONY BUNCIO
             </span>
           </a>
 

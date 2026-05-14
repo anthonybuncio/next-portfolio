@@ -100,7 +100,7 @@ export function Footer() {
 
           {/* Copyright */}
           <p className="font-mono text-xs tracking-widest text-muted-foreground">
-            © {new Date().getFullYear()} ANTHONY BUNCIO
+            ©{new Date().getFullYear()} Anthony Buncio
           </p>
         </div>
       </div>
