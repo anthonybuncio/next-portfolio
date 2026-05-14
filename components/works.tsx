@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useRef } from "react"
-import { motion, useMotionValue, useSpring } from "framer-motion"
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useRef, useState } from "react";
 
 const projects = [
   {
@@ -30,25 +30,25 @@ const projects = [
     image: "/sound-wave-visualization-dark-theme.jpg",
     year: "2023",
   },
-]
+];
 
 export function Works() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const springX = useSpring(mouseX, { stiffness: 150, damping: 20 })
-  const springY = useSpring(mouseY, { stiffness: 150, damping: 20 })
+  const springX = useSpring(mouseX, { stiffness: 150, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 150, damping: 20 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect()
-      mouseX.set(e.clientX - rect.left)
-      mouseY.set(e.clientY - rect.top)
+      const rect = containerRef.current.getBoundingClientRect();
+      mouseX.set(e.clientX - rect.left);
+      mouseY.set(e.clientY - rect.top);
     }
-  }
+  };
 
   return (
     <section className="relative py-32 px-8 md:px-12 md:py-24">
@@ -60,12 +60,20 @@ export function Works() {
         transition={{ duration: 0.8 }}
         className="mb-24"
       >
-        <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">04 — SELECTED WORKS</p>
-        <h2 className="font-sans text-3xl md:text-5xl font-light italic">The Distortion Gallery</h2>
+        <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
+          04 — SELECTED WORKS
+        </p>
+        <h2 className="font-sans text-3xl md:text-5xl font-light italic">
+          A Curated Collection
+        </h2>
       </motion.div>
 
       {/* Projects List */}
-      <div ref={containerRef} onMouseMove={handleMouseMove} className="relative">
+      <div
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        className="relative"
+      >
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
@@ -149,5 +157,5 @@ export function Works() {
       {/* Bottom Border */}
       <div className="border-t border-white/10" />
     </section>
-  )
+  );
 }

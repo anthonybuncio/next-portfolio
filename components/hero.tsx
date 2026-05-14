@@ -1,37 +1,49 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { SentientSphere } from "./sentient-sphere"
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { SentientSphere } from "./sentient-sphere";
 
 export function Hero() {
-  const containerRef = useRef<HTMLElement>(null)
+  const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-[#050505]">
+    <section
+      ref={containerRef}
+      className="relative h-screen w-full overflow-hidden bg-[#050505]"
+    >
       {/* 3D Sphere Background */}
       <div className="absolute inset-0">
         <SentientSphere />
       </div>
 
       {/* Typography Overlay */}
-      <motion.div style={{ opacity, scale }} className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 md:px-12 md:py-20">
+      <motion.div
+        style={{ opacity, scale }}
+        className="relative z-10 h-full flex flex-col justify-between p-8 py-20 md:p-12 md:px-12 md:py-20"
+      >
         {/* Top Left */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{
+            duration: 1,
+            delay: 0.2,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
         >
-          <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">01 — DISCIPLINE</p>
+          <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">
+            01 — DISCIPLINE
+          </p>
           <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
-            SYSTEM
+            SYSTEMS
             <br />
             <span className="italic">ARCHITECT</span>
           </h2>
@@ -41,7 +53,11 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{
+            duration: 0.8,
+            delay: 0.6,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
         >
           <motion.button
@@ -59,14 +75,20 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{
+            duration: 1,
+            delay: 0.4,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
           className="self-end text-right"
         >
-          <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">02 — CRAFT</p>
+          <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">
+            02 — CRAFT
+          </p>
           <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
-            INTERFACE
+            SOFTWARE
             <br />
-            <span className="italic">DESIGNER</span>
+            <span className="italic">ENGINEER</span>
           </h2>
         </motion.div>
       </motion.div>
@@ -80,13 +102,19 @@ export function Hero() {
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          transition={{
+            duration: 1.5,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent" />
+          <span className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
+            Scroll
+          </span>
+          <div className="w-px h-8 bg-linear-to-b from-white/50 to-transparent" />
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

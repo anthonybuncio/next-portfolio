@@ -1,33 +1,39 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { ArrowUpRight } from "lucide-react"
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const SOCIAL_LINKS = [
+  { label: "LinkedIn", href: "https://linkedin.com/in/anthonybuncio1/" },
+  { label: "GitHub", href: "https://github.com/anthonybuncio" },
+  { label: "Email", href: "mailto:anthonybuncio.work@gmail.com" },
+];
 
 export function Footer() {
-  const [time, setTime] = useState("")
-  const [isHovered, setIsHovered] = useState(false)
+  const [time, setTime] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
-      const now = new Date()
-      const hours = now.getHours().toString().padStart(2, "0")
-      const minutes = now.getMinutes().toString().padStart(2, "0")
-      const seconds = now.getSeconds().toString().padStart(2, "0")
-      const milliseconds = now.getMilliseconds().toString().padStart(3, "0")
-      setTime(`${hours}:${minutes}:${seconds}.${milliseconds}`)
-    }
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      const seconds = now.getSeconds().toString().padStart(2, "0");
+      const milliseconds = now.getMilliseconds().toString().padStart(3, "0");
+      setTime(`${hours}:${minutes}:${seconds}.${milliseconds}`);
+    };
 
-    updateTime()
-    const interval = setInterval(updateTime, 10)
-    return () => clearInterval(interval)
-  }, [])
+    updateTime();
+    const interval = setInterval(updateTime, 10);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <footer className="relative">
       {/* Main CTA */}
       <motion.a
-        href="mailto:hello@example.com"
+        href="mailto:anthonybuncio.work@gmail.com"
         data-cursor-hover
         className="relative block overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
@@ -78,22 +84,26 @@ export function Footer() {
 
           {/* Links */}
           <div className="flex gap-8">
-            {["LinkedIn", "GitHub", "Twitter"].map((link) => (
+            {SOCIAL_LINKS.map(({ label, href }) => (
               <a
-                key={link}
-                href="#"
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 data-cursor-hover
                 className="font-mono text-xs tracking-widest text-muted-foreground hover:text-white transition-colors duration-300"
               >
-                {link}
+                {label}
               </a>
             ))}
           </div>
 
           {/* Copyright */}
-          <p className="font-mono text-xs tracking-widest text-muted-foreground">© {new Date().getFullYear()}</p>
+          <p className="font-mono text-xs tracking-widest text-muted-foreground">
+            © {new Date().getFullYear()} ANTHONY BUNCIO
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

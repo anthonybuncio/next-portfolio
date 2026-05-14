@@ -1,33 +1,34 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Works", href: "#works" },
   { label: "Contact", href: "#contact" },
-]
+];
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (href: string) => {
-    setIsMenuOpen(false)
-    const element = document.querySelector(href)
+    setIsMenuOpen(false);
+    const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <>
@@ -36,21 +37,31 @@ export function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : ""
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md border-b border-border"
+            : ""
         }`}
       >
         <nav className="flex items-center justify-between px-6 py-4 my-0 md:px-12 md:py-5">
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             onClick={(e) => {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: "smooth" })
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="group flex items-center gap-2"
+            className="group flex items-center gap-2 md:gap-4"
           >
-            <span className="font-mono text-xs tracking-widest text-muted-foreground">PORTFOLIO</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:scale-150 transition-transform duration-300" />
+            <Image
+              src="/logo.png"
+              alt="logo"
+              width={50}
+              height={50}
+              className="group-hover:scale-150 transition-transform duration-300"
+            />
+            <span className="font-mono text-xs tracking-widest text-muted-foreground">
+              anthony buncio
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -72,10 +83,12 @@ export function Navbar() {
           {/* Status Indicator */}
           <div className="hidden md:flex items-center gap-3">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-chart-2 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-chart-2" />
             </span>
-            <span className="font-mono text-xs tracking-wider text-muted-foreground">AVAILABLE FOR WORK</span>
+            <span className="font-mono text-xs tracking-wider text-muted-foreground">
+              AVAILABLE FOR WORK
+            </span>
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,11 +102,15 @@ export function Navbar() {
               className="w-6 h-px bg-foreground origin-center"
             />
             <motion.span
-              animate={isMenuOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+              animate={
+                isMenuOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }
+              }
               className="w-6 h-px bg-foreground"
             />
             <motion.span
-              animate={isMenuOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
+              animate={
+                isMenuOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }
+              }
               className="w-6 h-px bg-foreground origin-center"
             />
           </button>
@@ -121,7 +138,9 @@ export function Navbar() {
                   onClick={() => scrollToSection(link.href)}
                   className="group text-4xl font-sans tracking-tight text-foreground"
                 >
-                  <span className="text-accent font-mono text-sm mr-2">0{index + 1}</span>
+                  <span className="text-accent font-mono text-sm mr-2">
+                    0{index + 1}
+                  </span>
                   {link.label}
                 </motion.button>
               ))}
@@ -135,12 +154,14 @@ export function Navbar() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
                 </span>
-                <span className="font-mono text-xs tracking-wider text-muted-foreground">AVAILABLE FOR WORK</span>
+                <span className="font-mono text-xs tracking-wider text-muted-foreground">
+                  AVAILABLE FOR WORK
+                </span>
               </motion.div>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Playfair_Display } from "next/font/google";
 import type React from "react";
+// @ts-ignore: CSS side-effect import without module declarations
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Anthony Buncio | Portfolio",
   description:
-    "System Architect & Interface Designer crafting intelligent digital experiences",
+    "System Architect & Software Engineer crafting intelligent digital experiences",
 };
 
 export const viewport: Viewport = {
