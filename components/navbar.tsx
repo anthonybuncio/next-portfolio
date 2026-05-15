@@ -83,11 +83,11 @@ export function Navbar() {
           {/* Status Indicator */}
           <div className="hidden md:flex items-center gap-3">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-chart-2 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-chart-2" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
             </span>
             <span className="font-mono text-xs tracking-wider text-muted-foreground">
-              AVAILABLE FOR WORK
+              TEXAS, US
             </span>
           </div>
 
@@ -155,7 +155,7 @@ export function Navbar() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
                 </span>
                 <span className="font-mono text-xs tracking-wider text-muted-foreground">
-                  AVAILABLE FOR WORK
+                  TEXAS, US
                 </span>
               </motion.div>
             </nav>

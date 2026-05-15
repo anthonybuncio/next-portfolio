@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const techItems = [
   "NEXT.JS",
@@ -15,7 +15,7 @@ const techItems = [
   "WEBGL",
   "NODE.JS",
   "PRECISION",
-]
+];
 
 const concepts = [
   "ARCHITECTURE",
@@ -30,10 +30,16 @@ const concepts = [
   "FLUX",
   "AXIOM",
   "TENSOR",
-]
+];
 
-function MarqueeRow({ items, direction = "left" }: { items: string[]; direction?: "left" | "right" }) {
-  const duplicatedItems = [...items, ...items, ...items, ...items]
+function MarqueeRow({
+  items,
+  direction = "left",
+}: {
+  items: string[];
+  direction?: "left" | "right";
+}) {
+  const duplicatedItems = [...items, ...items, ...items, ...items];
 
   return (
     <div className="relative overflow-hidden py-4">
@@ -51,12 +57,13 @@ function MarqueeRow({ items, direction = "left" }: { items: string[]; direction?
               transition: "all 0.3s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white"
-              e.currentTarget.style.WebkitTextStroke = "none"
+              e.currentTarget.style.color = "white";
+              e.currentTarget.style.webkitTextStroke = "none";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = "transparent"
-              e.currentTarget.style.WebkitTextStroke = "1px rgba(255,255,255,0.3)"
+              e.currentTarget.style.color = "transparent";
+              e.currentTarget.style.webkitTextStroke =
+                "1px rgba(255,255,255,0.3)";
             }}
           >
             {item}
@@ -65,7 +72,7 @@ function MarqueeRow({ items, direction = "left" }: { items: string[]; direction?
         ))}
       </motion.div>
     </div>
-  )
+  );
 }
 
 export function TechMarquee() {
@@ -79,7 +86,9 @@ export function TechMarquee() {
         transition={{ duration: 0.8 }}
         className="px-8 md:px-12 mb-16"
       >
-        <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">05 — TECHNICAL ARSENAL</p>
+        <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
+          05 — TECHNICAL ARSENAL
+        </p>
       </motion.div>
 
       {/* Marquee Rows */}
@@ -88,5 +97,5 @@ export function TechMarquee() {
         <MarqueeRow items={concepts} direction="right" />
       </div>
     </section>
-  )
+  );
 }

@@ -7,22 +7,22 @@ import { useRef, useState } from "react";
 
 const projects = [
   {
-    title: "Neural Interface",
+    title: "Street Lens",
     tags: ["Next.js", "OpenAI", "WebGL"],
-    image: "/abstract-neural-network-visualization-dark-theme.jpg",
+    image: "/futuristic-neon-style-map.jpg",
     year: "2024",
   },
   {
-    title: "Quantum Dashboard",
+    title: "Reddit Rescuer",
     tags: ["React", "D3.js", "Python"],
-    image: "/futuristic-data-dashboard-dark-minimal.jpg",
+    image: "/reddit-3d-illustration-background.jpg",
     year: "2024",
   },
   {
-    title: "Synthetic Memory",
+    title: "NASA Hackathon Project",
     tags: ["TypeScript", "LangChain", "Vector DB"],
-    image: "/abstract-memory-storage-visualization.jpg",
-    year: "2023",
+    image: "/neon-space-explorer.jpg",
+    year: "2022",
   },
   {
     title: "Echo Protocol",
