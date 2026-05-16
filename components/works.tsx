@@ -14,21 +14,21 @@ const projects = [
   },
   {
     title: "Reddit Rescuer",
-    tags: ["React", "D3.js", "Python"],
+    tags: ["React", "Reddit", "Python"],
     image: "/reddit-3d-illustration-background.jpg",
-    year: "2024",
+    year: "2023",
   },
   {
-    title: "NASA Hackathon Project",
-    tags: ["TypeScript", "LangChain", "Vector DB"],
+    title: "NASA Hackathon",
+    tags: ["TypeScript", "NASA", "Vector DB"],
     image: "/neon-space-explorer.jpg",
     year: "2022",
   },
   {
-    title: "Echo Protocol",
-    tags: ["Rust", "WebAssembly", "Audio"],
-    image: "/sound-wave-visualization-dark-theme.jpg",
-    year: "2023",
+    title: "Electron NBA",
+    tags: ["TypeScript", "ElectronJS", "NBA"],
+    image: "/abstract-vector-basketball.jpg",
+    year: "2019",
   },
 ];
 
@@ -91,7 +91,7 @@ export function Works() {
               className="group flex flex-col md:flex-row md:items-center justify-between gap-4"
             >
               {/* Year */}
-              <span className="font-mono text-xs text-muted-foreground tracking-widest order-1 md:order-none">
+              <span className="font-mono text-xs text-muted-foreground tracking-widest order-1 md:order-0">
                 {project.year}
               </span>
 
@@ -107,7 +107,7 @@ export function Works() {
               </motion.h3>
 
               {/* Tags */}
-              <div className="flex gap-2 flex-wrap order-2 md:order-none">
+              <div className="flex gap-2 flex-wrap order-2 md:order-0">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
