@@ -60,7 +60,7 @@ export function Hero() {
           }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
         >
-          <motion.button
+          {/* <motion.button
             data-cursor-hover
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -68,7 +68,29 @@ export function Hero() {
           >
             Initialize
             <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#2563eb] rounded-full animate-pulse" />
-          </motion.button>
+          </motion.button> */}
+
+          <span
+            className="group font-sans text-5xl md:text-7xl lg:text-8xl font-light tracking-tight whitespace-nowrap cursor-default"
+            style={{
+              WebkitTextStroke: "1px rgba(255,255,255,0.5)",
+              color: "transparent",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "white";
+              e.currentTarget.style.webkitTextStroke = "none";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "transparent";
+              e.currentTarget.style.webkitTextStroke =
+                "1px rgba(255,255,255,0.3)";
+            }}
+          >
+            <span className="mx-2 md:mx-8 text-white/20">•</span>
+            Anthony Buncio
+            <span className="mx-2 md:mx-8 text-white/20">•</span>
+          </span>
         </motion.div>
 
         {/* Bottom Right */}

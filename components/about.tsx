@@ -28,6 +28,7 @@ export function About() {
 
   return (
     <section
+      id="about"
       ref={containerRef}
       className="relative py-32 overflow-hidden md:py-0"
     >
@@ -40,10 +41,11 @@ export function About() {
         className="px-8 md:px-12 mb-0 py-20"
       >
         <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
-          03 — HARD TRUTHS
+          03 — PRINCIPLES
         </p>
         <h2 className="font-sans text-3xl md:text-5xl font-light italic">
-          From the Trenches
+          {/* Take It or Leave It */}
+          The Way I See It
         </h2>
       </motion.div>
 
