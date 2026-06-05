@@ -2,12 +2,14 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Works", href: "#works" },
   { label: "Contact", href: "#contact" },
+  { label: "Resume", href: "/summary" },
 ];
 
 export function Navbar() {
@@ -57,6 +59,7 @@ export function Navbar() {
               alt="logo"
               width={50}
               height={50}
+              style={{ height: "auto" }}
               className="group-hover:scale-150 transition-transform duration-300"
             />
             <span className="font-mono text-xs tracking-widest text-muted-foreground">
@@ -68,14 +71,25 @@ export function Navbar() {
           <ul className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
               <li key={link.label}>
-                <button
-                  onClick={() => scrollToSection(link.href)}
-                  className="group relative font-mono text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300"
-                >
-                  <span className="text-accent mr-1">0{index + 1}</span>
-                  {link.label.toUpperCase()}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
-                </button>
+                {link.href.startsWith("#") ? (
+                  <button
+                    onClick={() => scrollToSection(link.href)}
+                    className="group relative font-mono text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300"
+                  >
+                    <span className="text-accent mr-1">0{index + 1}</span>
+                    {link.label.toUpperCase()}
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                  </button>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="group relative font-mono text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300"
+                  >
+                    <span className="text-accent mr-1">0{index + 1}</span>
+                    {link.label.toUpperCase()}
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -129,20 +143,41 @@ export function Navbar() {
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">
               {navLinks.map((link, index) => (
-                <motion.button
-                  key={link.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: index * 0.1 }}
-                  onClick={() => scrollToSection(link.href)}
-                  className="group text-4xl font-sans tracking-tight text-foreground"
-                >
-                  <span className="text-accent font-mono text-sm mr-2">
-                    0{index + 1}
-                  </span>
-                  {link.label}
-                </motion.button>
+                link.href.startsWith("#") ? (
+                  <motion.button
+                    key={link.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: index * 0.1 }}
+                    onClick={() => scrollToSection(link.href)}
+                    className="group text-4xl font-sans tracking-tight text-foreground"
+                  >
+                    <span className="text-accent font-mono text-sm mr-2">
+                      0{index + 1}
+                    </span>
+                    {link.label}
+                  </motion.button>
+                ) : (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="group text-4xl font-sans tracking-tight text-foreground"
+                    >
+                      <span className="text-accent font-mono text-sm mr-2">
+                        0{index + 1}
+                      </span>
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                )
               ))}
               <motion.div
                 initial={{ opacity: 0 }}
