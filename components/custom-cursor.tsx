@@ -1,56 +1,56 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
-      setIsVisible(true)
-    }
+      setPosition({ x: e.clientX, y: e.clientY });
+      setIsVisible(true);
+    };
 
-    const handleMouseEnter = () => setIsVisible(true)
-    const handleMouseLeave = () => setIsVisible(false)
+    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => setIsVisible(false);
 
     const handleHoverStart = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
+      const target = e.target as HTMLElement;
       if (target.closest("a, button, [data-cursor-hover]")) {
-        setIsHovering(true)
+        setIsHovering(true);
       }
-    }
+    };
 
     const handleHoverEnd = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
+      const target = e.target as HTMLElement;
       if (target.closest("a, button, [data-cursor-hover]")) {
-        setIsHovering(false)
+        setIsHovering(false);
       }
-    }
+    };
 
-    window.addEventListener("mousemove", handleMouseMove)
-    document.addEventListener("mouseenter", handleMouseEnter)
-    document.addEventListener("mouseleave", handleMouseLeave)
-    document.addEventListener("mouseover", handleHoverStart)
-    document.addEventListener("mouseout", handleHoverEnd)
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseenter", handleMouseEnter);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseover", handleHoverStart);
+    document.addEventListener("mouseout", handleHoverEnd);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      document.removeEventListener("mouseenter", handleMouseEnter)
-      document.removeEventListener("mouseleave", handleMouseLeave)
-      document.removeEventListener("mouseover", handleHoverStart)
-      document.removeEventListener("mouseout", handleHoverEnd)
-    }
-  }, [])
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseover", handleHoverStart);
+      document.removeEventListener("mouseout", handleHoverEnd);
+    };
+  }, []);
 
   return (
     <>
       {/* Main cursor dot */}
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference"
+        className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-10000 mix-blend-difference"
         animate={{
           x: position.x - 6,
           y: position.y - 6,
@@ -61,7 +61,7 @@ export function CustomCursor() {
       />
       {/* Hover ring */}
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 border border-white rounded-full pointer-events-none z-[10000] mix-blend-difference"
+        className="fixed top-0 left-0 w-12 h-12 border border-white rounded-full pointer-events-none z-10000 mix-blend-difference"
         animate={{
           x: position.x - 24,
           y: position.y - 24,
@@ -71,5 +71,5 @@ export function CustomCursor() {
         transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.8 }}
       />
     </>
-  )
+  );
 }

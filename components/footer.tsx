@@ -41,7 +41,7 @@ export function Footer() {
       >
         {/* Background Curtain */}
         <motion.div
-          className="absolute inset-0 bg-[#2563eb]"
+          className="absolute inset-0 bg-[#d4af37]"
           initial={{ y: "100%" }}
           animate={{ y: isHovered ? "0%" : "100%" }}
           transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}

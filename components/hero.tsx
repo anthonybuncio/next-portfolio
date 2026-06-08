@@ -78,7 +78,7 @@ export function Hero() {
               transition: "all 0.3s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
+              e.currentTarget.style.color = "#D3AF37";
               e.currentTarget.style.webkitTextStroke = "none";
             }}
             onMouseLeave={(e) => {
